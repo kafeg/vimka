@@ -1,0 +1,11 @@
+Source: vimka
+Section: kde
+Priority: optional
+Maintainer: Vitaly Petrov <v31337@gmail.com>
+Build-Depends: debhelper (>= 5.0), cdbs, imagemagick, libqt4-dev (>= 4.7)
+Standards-Version: 3.8.0
+
+Package: vimka
+Architecture: all
+Depends: libqt4-declarative, libqt4-gui
+Description: Vimka - Vkontakte IM
