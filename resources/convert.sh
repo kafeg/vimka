@@ -1,8 +1,8 @@
 #!/bin/bash
 
-P="../vimka/resources"
+P="../trunk/resources"
 
-echo $P;
+#echo $P;
 
 mkdir -p $P/hicolor/256x256/apps/
 mkdir -p $P/hicolor/128x128/apps/
