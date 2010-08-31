@@ -58,13 +58,21 @@
      <valuelist key="QtProjectManager.QMakeBuildStep.QMakeArguments" type="QVariantList"/>
     </valuemap>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStep.1" type="QVariantMap">
+     <valuelist key="ProjectExplorer.ProcessStep.Arguments" type="QVariantList"/>
+     <value key="ProjectExplorer.ProcessStep.Command" type="QString">../trunk/resources/datacopy.sh</value>
+     <value key="ProjectExplorer.ProcessStep.Enabled" type="bool">true</value>
+     <value key="ProjectExplorer.ProcessStep.WorkingDirectory" type="QString">$BUILDDIR</value>
+     <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Data copy: Linux</value>
+     <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">ProjectExplorer.ProcessStep</value>
+    </valuemap>
+    <valuemap key="ProjectExplorer.BuildConfiguration.BuildStep.2" type="QVariantMap">
      <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Сборка</value>
      <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
      <value key="Qt4ProjectManager.MakeStep.Clean" type="bool">false</value>
      <valuelist key="Qt4ProjectManager.MakeStep.MakeArguments" type="QVariantList"/>
      <value key="Qt4ProjectManager.MakeStep.MakeCommand" type="QString"></value>
     </valuemap>
-    <value key="ProjectExplorer.BuildConfiguration.BuildStepsCount" type="int">2</value>
+    <value key="ProjectExplorer.BuildConfiguration.BuildStepsCount" type="int">3</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.CleanStep.0" type="QVariantMap">
      <value key="ProjectExplorer.ProjectConfiguration.DisplayName" type="QString">Сборка</value>
      <value key="ProjectExplorer.ProjectConfiguration.Id" type="QString">Qt4ProjectManager.MakeStep</value>
