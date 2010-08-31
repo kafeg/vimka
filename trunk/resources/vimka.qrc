@@ -1,0 +1,44 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/upload.gif</file>
+        <file>translates/locale_ru_RU.qm</file>
+        <file>images/audio.png</file>
+        <file>images/magglass.png</file>
+        <file>images/magglass_transp.png</file>
+        <file>images/darr_dd_out.png</file>
+        <file>declarative/photoviewer/photoviewer.qml</file>
+        <file>declarative/photoviewer/photoviewer.qmlproject</file>
+        <file>declarative/photoviewer/photoviewer.qmlproject.user</file>
+        <file>declarative/photoviewer/i18n/base.ts</file>
+        <file>declarative/photoviewer/i18n/qml_fr.qm</file>
+        <file>declarative/photoviewer/i18n/qml_fr.ts</file>
+        <file>declarative/photoviewer/PhotoViewerCore/AlbumDelegate.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/BusyIndicator.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/Button.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/EditableButton.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/PhotoDelegate.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/ProgressBar.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/qmldir</file>
+        <file>declarative/photoviewer/PhotoViewerCore/RssModel.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/Tag.qml</file>
+        <file>declarative/photoviewer/PhotoViewerCore/images/box-shadow.png</file>
+        <file>declarative/photoviewer/PhotoViewerCore/images/busy.png</file>
+        <file>declarative/photoviewer/PhotoViewerCore/images/cardboard.png</file>
+        <file>declarative/photoviewer/PhotoViewerCore/script/script.js</file>
+        <file>images/video.png</file>
+        <file>images/picture.png</file>
+        <file>declarative/photoviewer/PhotoViewerCore/VKXmlModel.qml</file>
+        <file>declarative/roster/roster.qml</file>
+        <file>declarative/roster/RosterItemDelegate.qml</file>
+        <file>declarative/photo/photo.qml</file>
+        <file>declarative/photo/ScrollBar.qml</file>
+        <file>declarative/photo/stripes.png</file>
+        <file>declarative/roster/ScrollBar.qml</file>
+        <file>declarative/roster/busy.png</file>
+        <file>declarative/roster/BusyIndicator.qml</file>
+        <file>declarative/roster/ProgressBar.qml</file>
+        <file>images/birthday.png</file>
+        <file>images/incomming.png</file>
+        <file>images/more.gif</file>
+    </qresource>
+</RCC>

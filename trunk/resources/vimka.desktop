@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+#Version=undefined
+Name=Vimka
+Exec=vimka
+Icon=vimka
+Terminal=false
+Categories=Internet;
+X-Ubuntu-Gettext-Domain=vimka
