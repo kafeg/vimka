@@ -23,6 +23,7 @@
 #include "../chats/chats.h"
 #include "ui_vimkamain.h"
 #include <QDeclarativeContext>
+#include "../SlidingStackedWidget.h"
 
 VKRoster::VKRoster(VimkaMain *rosterWindows, VKEngine *engine,
                    QListView *rosterView, QObject *parent) :
@@ -134,6 +135,9 @@ void VKRoster::slotOpenChat(QModelIndex index)
     PersonalChat *chat = m_rosterWindow->chats->openPersonalChat(mess, status);
     m_rosterWindow->chats->showPersonalChat(chat);
     setItem(srcIndex.row(),21, new QStandardItem("0"));
+#ifdef MOBILE_UI
+    m_rosterWindow->slidingStacked->slideInIdx(m_rosterWindow->slidingStacked->indexOf(m_rosterWindow->chats));
+#endif
 
 }
 

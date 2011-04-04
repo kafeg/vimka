@@ -32,6 +32,7 @@
 #include "../settingsmanager.h"
 #include "declarative/photoviewer.h"
 #include <QDeclarativePropertyMap>
+#include "../SlidingStackedWidget.h"
 
 PersonalChat::PersonalChat( QString _fromId, Chats *chatsWindow,
                             VKEngine *engine, MediaPlayer *pagePlayer, AlbumsModel *albumsModel) :
@@ -884,6 +885,10 @@ void PersonalChat::sendMessageReceived(VKRequest *req)
         reqSendId = m_vkEngine->reqMessages_send(outMessage);
         //ui->lblUploadInfo->hide();
     }
+    if (req->result.contains("Permission to perform this action is denied by user") ||
+        req->result.contains("<error_code>7</error_code>") ){
+        chatEdit->append(tr("Error: Permission to perform this action is denied by user"));
+    }
 
     chatEdit->setFocus();
 
@@ -906,4 +911,9 @@ void PersonalChat::slotLps9UserOffline(QString uid, QString flags)
 void PersonalChat::on_pbPVback_clicked()
 {
     ui->stackedWidget->setCurrentWidget(ui->pageChat);
+}
+
+void PersonalChat::on_rosterButton_clicked()
+{
+    m_Chats->m_rosterWindow->slidingStacked->slideInIdx(m_Chats->m_rosterWindow->slidingStacked->indexOf(m_Chats->m_rosterWindow->rosterWidget));
 }

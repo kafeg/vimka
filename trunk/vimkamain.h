@@ -22,6 +22,7 @@ class wwActiveLineEdit;
 class VKRequest;
 class QHttpImage;
 class AboutDialog;
+class SlidingStackedWidget;
 
 class VimkaMain : public QMainWindow
 {
@@ -43,6 +44,8 @@ public:
     wwActiveLabel *activityLabel;
     wwActiveLineEdit *activityEditor;
     QLineEdit *filterEditor;
+    QWidget *rosterWidget;
+    SlidingStackedWidget *slidingStacked;
 
     //upload мигалка
     QWidget *uploadWgt;

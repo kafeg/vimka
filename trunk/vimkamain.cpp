@@ -19,6 +19,7 @@
 #include <QDesktopWidget>
 #include "roster/qhttpimage.h"
 #include "aboutdialog.h"
+#include "SlidingStackedWidget.h"
 
 VimkaMain::VimkaMain(QWidget *parent) :
         QMainWindow(parent),
@@ -26,7 +27,24 @@ VimkaMain::VimkaMain(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->stackedWidget->setCurrentWidget(ui->loginPage);
+    slidingStacked= new SlidingStackedWidget(this);
+    slidingStacked->setSpeed(1000);
+
+    //индусо-код... да и пох...
+    for (int i = 0; i < ui->stackedWidget->count();i++){
+      slidingStacked->addWidget(ui->stackedWidget->widget(i));
+    }
+    for (int i = 0; i < ui->stackedWidget->count();i++){
+      slidingStacked->addWidget(ui->stackedWidget->widget(i));
+    }
+    for (int i = 0; i < ui->stackedWidget->count();i++){
+      slidingStacked->addWidget(ui->stackedWidget->widget(i));
+    }
+
+    ui->stackedWidget = slidingStacked;
+    setCentralWidget(slidingStacked);
+
+    slidingStacked->setCurrentWidget(ui->loginPage);
     ui->lblErrorLogin->hide();
     ui->listRoster->hide();
 
@@ -46,12 +64,16 @@ VimkaMain::VimkaMain(QWidget *parent) :
     uploadWgt = ui->uploadWidget;
     filterEditor = ui->leFilter;
     filterEditor->setToolTip(tr("Enter your search phrase here..."));
+    rosterWidget = ui->rosterPage;
 
     settingsMngr = new SettingsManager(this);
 
     vkEngine = new VKEngine(this);
     trayIcon = new TrayIcon(this);
     chats = new Chats(this);
+#ifdef MOBILE_UI
+    slidingStacked->addWidget(chats);
+#endif
 
     settingsMngr->loadSettings();
 
@@ -85,6 +107,9 @@ VimkaMain::VimkaMain(QWidget *parent) :
 
     on_tbStatus_clicked(ui->tbStatus->isChecked());
 
+    setAttribute (Qt::WA_ShowWithoutActivating);
+    setWindowFlags (Qt::WindowStaysOnTopHint);
+    setFocusPolicy(Qt::NoFocus);
 }
 
 VimkaMain::~VimkaMain()
@@ -174,7 +199,7 @@ void VimkaMain::actionLogout_triggered()
     chats->hide();
     chats->clearList();
 
-    ui->stackedWidget->setCurrentWidget(ui->loginPage);
+    slidingStacked->slideInIdx(slidingStacked->indexOf(ui->loginPage));
     ui->lblErrorLogin->hide();
     ui->lePass->clear();
     currentEmail.clear();
@@ -182,7 +207,7 @@ void VimkaMain::actionLogout_triggered()
     lastEmail.clear();
     lastPass.clear();
     ui->cbAutoLogin->setChecked(false);
-    ui->stackedWidget->setCurrentWidget(ui->loginPage);
+    slidingStacked->slideInIdx(slidingStacked->indexOf(ui->loginPage));
 
 }
 
@@ -210,7 +235,7 @@ void VimkaMain::on_pbLogin_clicked()
         emails.append(currentEmail);
     }
 
-    ui->stackedWidget->setCurrentWidget(ui->rosterPage);
+    slidingStacked->setCurrentWidget(ui->rosterPage);
     filterEditor->setFocus();
 
     settingsMngr->saveSettings();
@@ -274,16 +299,16 @@ void VimkaMain::on_lePass_returnPressed()
 
 void VimkaMain::on_tbSettingsCancel_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->rosterPage);
+    slidingStacked->slideInIdx(slidingStacked->indexOf(ui->rosterPage));
 }
 
 void VimkaMain::on_tbSettingsSave_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->rosterPage);
+    slidingStacked->slideInIdx(slidingStacked->indexOf(ui->rosterPage));
     settingsMngr->applySettings();
 }
 
 void VimkaMain::on_tbShowSettings_clicked()
 {
-    ui->stackedWidget->setCurrentWidget(ui->settingsPage);
+    slidingStacked->slideInIdx(slidingStacked->indexOf(ui->settingsPage));
 }

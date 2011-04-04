@@ -14,6 +14,8 @@ OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
 
+DEFINES += MOBILE_UI
+
 TARGET = vimka
 TEMPLATE = app
 
@@ -57,7 +59,8 @@ SOURCES += main.cpp \
     chats/emoticons/chatemoticonmenu.cpp \
     roster/rosterproxymodel.cpp \
     chats/declarative/photoviewer.cpp \
-    aboutdialog.cpp
+    aboutdialog.cpp \
+    SlidingStackedWidget.cpp
 HEADERS += vimkamain.h \
     roster/rosterwidgetitem.h \
     chats/chats.h \
@@ -102,7 +105,8 @@ HEADERS += vimkamain.h \
     chats/emoticons/chatemoticonmenu.h \
     roster/rosterproxymodel.h \
     chats/declarative/photoviewer.h \
-    aboutdialog.h
+    aboutdialog.h \
+    SlidingStackedWidget.h
 FORMS += vimkamain.ui \
     chats/chats.ui \
     chats/personalchat.ui \
