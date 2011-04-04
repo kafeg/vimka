@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QProgressBar>
 #include "../vimkamain.h"
+#include "ui_vimkamain.h"
 #include "../trayicon.h"
 #include "../chats/chats.h"
 #include <QDomDocument>
@@ -67,9 +68,11 @@ VKEngine::VKEngine(VimkaMain *rosterWindow, QObject *parent) :
 void VKEngine::requestAppAuth(QString userMail, QString userPass)
 {
     //
+    //m_rosterWindow->ui->loginWgt->layout()->removeWidget(viewBrowser);
     viewBrowser = new QWidget();
     viewBrowser->setGeometry(0,0,300,400);
     QVBoxLayout *l = new QVBoxLayout(viewBrowser);
+    //m_rosterWindow->ui->loginWgt->layout()->addWidget(debugView);
 
     debugView = new QWebView();
     l->addWidget(debugView);

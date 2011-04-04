@@ -14,6 +14,7 @@
 #include <QDesktopWidget>
 #include "../settingsmanager.h"
 #include "../vk/vkroster.h"
+#include "../SlidingStackedWidget.h"
 
 Chats::Chats(VimkaMain *rosterWindow, QWidget *parent) :
         QWidget(parent),
@@ -218,6 +219,9 @@ void Chats::on_twChats_tabCloseRequested(int index)
     if (twChats->count()==0){
         hide();
         pagePlayer->m_MediaObject.stop();
+#ifdef MOBILE_UI
+        m_rosterWindow->slidingStacked->slideInIdx(m_rosterWindow->slidingStacked->indexOf(m_rosterWindow->ui->rosterPage));
+#endif
     }
 }
 

@@ -192,6 +192,7 @@ private slots:
     //дополнительно
     void receivedDeleteMessage(VKRequest *req);
 
+    void on_rosterButton_clicked();
 };
 
 #endif // PERSONALCHAT_H

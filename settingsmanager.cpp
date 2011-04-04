@@ -9,6 +9,7 @@
 #include <QTextStream>
 #include "chats/chats.h"
 #include <QNetworkProxy>
+#include "SlidingStackedWidget.h"
 
 SettingsManager::SettingsManager(VimkaMain *rosterWindows,
                                  QObject *parent) :
@@ -29,7 +30,7 @@ SettingsManager::SettingsManager(VimkaMain *rosterWindows,
 
 void SettingsManager::loadSettings()
 {
-    m_rosterWindows->ui->stackedWidget->setCurrentWidget(m_rosterWindows->ui->loginPage);
+    m_rosterWindows->slidingStacked->slideInIdx(m_rosterWindows->slidingStacked->indexOf(m_rosterWindows->ui->loginPage));
 
     /*QSettings settings(settingsDir()+"/vimka"+
                        QApplication::applicationVersion()
