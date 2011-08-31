@@ -686,6 +686,25 @@ int VKEngine::reqPhotos_getById(QStringList photos)
     return id;
 }
 
+int VKEngine::reqPhotos_getUploadServer(QString aid, QString gid)
+{
+    int id = m_reqCounter++;
+    VKRequest *request = new VKRequest(VKRequest::Photos_getUploadServer, mid, sid, secret, app_id, id );
+    request->make_Photos_getUploadServer(aid, gid);
+    //qDebug() << request->requestUrlPath;
+    appendRequest(request);
+    return id;
+}
+
+int VKEngine::reqPhotos_get(QString uid, QString aid, QStringList pids)
+{
+    int id = m_reqCounter++;
+    VKRequest *request = new VKRequest(VKRequest::Photos_get, mid, sid, secret, app_id, id );
+    request->make_Photos_get(uid, aid, pids);
+    appendRequest(request);
+    return id;
+}
+
 int VKEngine::reqVideo_get(QString uid, QStringList videos,
                            QString width, QString count,
                            QString offset)

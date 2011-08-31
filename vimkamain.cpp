@@ -20,6 +20,7 @@
 #include "roster/qhttpimage.h"
 #include "aboutdialog.h"
 #include "SlidingStackedWidget.h"
+#include "copyphotosdialog.h"
 
 VimkaMain::VimkaMain(QWidget *parent) :
         QMainWindow(parent),
@@ -110,6 +111,14 @@ VimkaMain::VimkaMain(QWidget *parent) :
     setAttribute (Qt::WA_ShowWithoutActivating);
     setWindowFlags (Qt::WindowStaysOnTopHint);
     setFocusPolicy(Qt::NoFocus);
+
+    copyPhotosDialog = new CopyPhotosDialog(vkEngine, this);
+
+    extendedMenu = new QMenu(this);
+    QAction *copyPhotosDialogAction = extendedMenu->addAction("Copy Photos Dialog");
+    connect(copyPhotosDialogAction,SIGNAL(triggered()),copyPhotosDialog,SLOT(exec()));
+
+    ui->tbExtended->setMenu(extendedMenu);
 }
 
 VimkaMain::~VimkaMain()
