@@ -11,9 +11,9 @@ QT += core \
 
 DEFINES += MOBILE_UI
 
-android {
-QT -= phonon
-}
+#android {
+#QT -= phonon
+#}
 
 #DESTDIR = bin
 #OBJECTS_DIR = build
@@ -61,7 +61,8 @@ SOURCES += main.cpp \
     roster/rosterproxymodel.cpp \
     chats/declarative/photoviewer.cpp \
     aboutdialog.cpp \
-    SlidingStackedWidget.cpp
+    SlidingStackedWidget.cpp \
+    copyphotosdialog.cpp
 
 !android {
     SOURCES += chats/vkmediafactory.cpp \
@@ -111,7 +112,8 @@ HEADERS += vimkamain.h \
     roster/rosterproxymodel.h \
     chats/declarative/photoviewer.h \
     aboutdialog.h \
-    SlidingStackedWidget.h
+    SlidingStackedWidget.h \
+    copyphotosdialog.h
 
 !android {
 HEADERS += chats/vkmediafactory.h \
@@ -122,7 +124,8 @@ HEADERS += chats/vkmediafactory.h \
 FORMS += vimkamain.ui \
     chats/chats.ui \
     chats/personalchat.ui \
-    aboutdialog.ui
+    aboutdialog.ui \
+    copyphotosdialog.ui
 RESOURCES += resources/vimka.qrc
 
 RC_FILE = resources/vimka.rc
@@ -170,3 +173,6 @@ OTHER_FILES += \
     android/res/values/libs.xml \
     android/res/drawable-ldpi/icon.png \
     android/res/drawable-hdpi/icon.png
+
+
+

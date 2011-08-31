@@ -23,6 +23,8 @@ public:
         Photos_getAlbums,
         Photos_get,
         Photos_getById,
+        //
+        Photos_getUploadServer,
 
         //аудио
         Audio_get,
@@ -59,6 +61,7 @@ public:
     void make_Photos_getAlbums(QString uid, QStringList aids);
     void make_Photos_get(QString uid, QString aid, QStringList pids = QStringList());
     void make_Photos_getById(QStringList photos);
+    void make_Photos_getUploadServer(QString aid, QString gid);
     void make_Audio_get(QString uid, QString gid = "-1", QString aids = "-1",
                         QString need_user = "0");
     void make_Audio_getById(QStringList audios);

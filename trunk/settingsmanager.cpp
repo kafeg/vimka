@@ -191,6 +191,7 @@ void SettingsManager::loadStyle()
     sexnonepath = iconsDir + "sex_none.png";
 
     mwUI->tbAbout->setIcon(QIcon(iconsDir + "about.png"));
+    mwUI->tbExtended->setIcon(QIcon(iconsDir + "restore.png"));
     mwUI->tbStatus->setIcon(QIcon(iconsDir + "status.png"));
     mwUI->tbLogout->setIcon(QIcon(iconsDir + "logout.png"));
     mwUI->cbStatus->setItemIcon(0, online);

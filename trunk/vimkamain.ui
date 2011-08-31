@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>240</width>
-    <height>440</height>
+    <width>374</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -45,7 +45,7 @@
        </size>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="rosterPage">
        <property name="styleSheet">
@@ -165,6 +165,19 @@
              </property>
              <property name="text">
               <string>Settings</string>
+             </property>
+             <property name="autoRaise">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="tbExtended">
+             <property name="text">
+              <string>Extended</string>
+             </property>
+             <property name="popupMode">
+              <enum>QToolButton::MenuButtonPopup</enum>
              </property>
              <property name="autoRaise">
               <bool>true</bool>
@@ -805,8 +818,8 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>240</width>
-     <height>18</height>
+     <width>374</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>

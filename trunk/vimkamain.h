@@ -23,6 +23,7 @@ class VKRequest;
 class QHttpImage;
 class AboutDialog;
 class SlidingStackedWidget;
+class CopyPhotosDialog;
 
 class VimkaMain : public QMainWindow
 {
@@ -56,17 +57,21 @@ public:
     QImage mid_photo_rec;
     QHttpImage *midImg;
 
+    VKEngine *vkEngine;
+
 protected:
     void closeEvent(QCloseEvent *event);
 
 private:
     Ui::VimkaMain *ui;
-    VKEngine *vkEngine;
     VKRoster *vkRoster;
+    CopyPhotosDialog *copyPhotosDialog;
 
     QStringList emails;
 
     AboutDialog *aboutDialog;
+
+    QMenu *extendedMenu;
 
 private slots:
     void on_tbShowSettings_clicked();

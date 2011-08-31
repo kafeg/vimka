@@ -301,6 +301,27 @@ void VKRequest::make_Photos_getById(QStringList photos)
     makeSig();
 }
 
+void VKRequest::make_Photos_getUploadServer(QString aid, QString gid)
+{
+    //    photos
+    //    aid
+    //    ✔
+    //    ID альбома, в который необходимо загрузить фотографии.
+    //    gid
+    //    ID группы, при загрузке фотографии в группу.
+    requestTypeText = "photos.getUploadServer";
+
+    m_requestSrc.append("aid="+aid);
+    m_requestSrc.append("api_id="+m_api_id);
+    m_requestSrc.append("format=XML");
+    if ( !gid.isEmpty() ) m_requestSrc.append("gid="+gid);
+    m_requestSrc.append("method="+requestTypeText);
+    m_requestSrc.append("sid="+m_sid);
+    m_requestSrc.append("v=3.0");
+
+    makeSig();
+}
+
 void VKRequest::make_Video_get(QString uid, QStringList videos,
                     QString width, QString count,
                     QString offset)

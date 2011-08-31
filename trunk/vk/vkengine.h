@@ -66,11 +66,13 @@ public:
     //    photos.getAlbums – возвращает список альбомов пользователя.
     int reqPhotos_getAlbums(QString uid, QStringList aids = QStringList());
     //    photos.get – возвращает список фотографий в альбоме.
+    int reqPhotos_get(QString uid, QString aid, QStringList pids = QStringList());
     //    photos.getById – возвращает информацию о фотографиях.
     int reqPhotos_getById(QStringList photos);
     //    photos.createAlbum – создает пустой альбом для фотографий.
     //    photos.editAlbum – обновляет данные альбома для фотографий.
     //    photos.getUploadServer – возвращает адрес сервера для загрузки фотографий.
+    int reqPhotos_getUploadServer(QString aid, QString gid = "");
     //    photos.save – сохраняет фотографии после успешной загрузки.
     //    photos.getProfileUploadServernew – возвращает адрес сервера для загрузки фотографии на страницу пользователя.
     //    photos.saveProfilePhotonew – сохраняет фотографию страницы пользователя после успешной загрузки.
