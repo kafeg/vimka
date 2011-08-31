@@ -14,7 +14,9 @@ class VKMessage;
 class VKEngine;
 class PersonalChat;
 class QTabWidget;
+#ifdef QT_PHONON_LIB
 class MediaPlayer;
+#endif
 class AlbumsModel;
 
 class Chats : public QWidget
@@ -52,8 +54,9 @@ private:
     QMap<QString, QWidget*> opennedInfoPages;
 
     QTabWidget *twChats;
-
+#ifdef QT_PHONON_LIB
     MediaPlayer *pagePlayer;
+#endif
 
     int tabIdFromUid(QString uid);
 
