@@ -2,11 +2,11 @@
 #define MEDIAPLAYER_H
 
 #include <QObject>
-#include <Phonon/MediaObject>
-#include <Phonon/AudioOutput>
-#include <Phonon/SeekSlider>
-#include <Phonon/VolumeSlider>
-#include <phonon/videowidget.h>
+#include <MediaObject>
+#include <AudioOutput>
+#include <SeekSlider>
+#include <VolumeSlider>
+#include <VideoWidget>
 #include <QUrl>
 #include <QIcon>
 #include <QMap>

@@ -19,7 +19,9 @@ class QTabWidget;
 class QTimer;
 class QStandardItemModel;
 class MessageStyler;
+#ifdef QT_PHONON_LIB
 class MediaPlayer;
+#endif
 class AlbumsModel;
 class VideoListModel;
 class SettingsManager;
@@ -31,7 +33,11 @@ class PersonalChat : public QWidget
     friend class Chats;
 public:
     explicit PersonalChat( QString _fromId, Chats *chatsWindow,
-                           VKEngine *engine, MediaPlayer *pagePlayer, AlbumsModel *albumsModel);
+                           VKEngine *engine,
+                           #ifdef QT_PHONON_LIB
+                           MediaPlayer *pagePlayer,
+                           #endif
+                           AlbumsModel *albumsModel);
     ~PersonalChat();
 
     bool showed;
@@ -67,9 +73,9 @@ public slots:
 private:
     Ui::PersonalChat *ui;
     SettingsManager *sMn;
-
+#ifdef QT_PHONON_LIB
     MediaPlayer *pagePlayer;
-
+#endif
     QTimer *incMessageMigalko;
 
     bool onlineMess;

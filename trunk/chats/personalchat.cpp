@@ -20,8 +20,10 @@
 #include <QStandardItemModel>
 #include <QStandardItem>
 #include "messagestyler.h"
-#include "vkmediafactory.h"
+#ifdef QT_PHONON_LIB
 #include "mediaplayer.h"
+#include "vkmediafactory.h"
+#endif
 #include <QDeclarativeView>
 #include "declarative/albumsmodel.h"
 #include <QDeclarativeContext>
@@ -35,12 +37,18 @@
 #include "../SlidingStackedWidget.h"
 
 PersonalChat::PersonalChat( QString _fromId, Chats *chatsWindow,
-                            VKEngine *engine, MediaPlayer *pagePlayer, AlbumsModel *albumsModel) :
+                            VKEngine *engine,
+                            #ifdef QT_PHONON_LIB
+                            MediaPlayer *pagePlayer,
+                            #endif
+                            AlbumsModel *albumsModel) :
 QWidget(0),
 ui(new Ui::PersonalChat)
 {
     ui->setupUi(this);
+    #ifdef QT_PHONON_LIB
     this->pagePlayer = pagePlayer;
+    #endif
     this->albumsModel = albumsModel;
 
     setObjectName(_fromId);
@@ -86,9 +94,10 @@ ui(new Ui::PersonalChat)
     connect(viewScroller, SIGNAL(timeout()), this, SLOT(scrollToBottom()));
 
     //act->setShortcutContext();
+#ifdef QT_PHONON_LIB
     VKMediaFactory *factory = new VKMediaFactory(webView, pagePlayer);
-
     webView->page()->setPluginFactory(factory);
+#endif
 
     ui->webkitWgt->layout()->addWidget(webView);
     webView->setHtml("");
@@ -288,7 +297,9 @@ void PersonalChat::showChat()
 
 void PersonalChat::hideChat ( )
 {
+    #ifdef QT_PHONON_LIB
     pagePlayer->m_MediaObject.stop();
+#endif
     showed = false;
     hide();
 }
@@ -325,7 +336,9 @@ void PersonalChat::messageChanged(VKMessage *mess)
 
 void PersonalChat::updateView()
 {
+    #ifdef QT_PHONON_LIB
     pagePlayer->clearButtons();
+    #endif
 
     QString html = sMn->sheader;
 

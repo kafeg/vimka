@@ -9,7 +9,9 @@
 #include "chattextedit.h"
 #include "ui_vimkamain.h"
 #include <QTabWidget>
+#ifdef QT_PHONON_LIB
 #include "mediaplayer.h"
+#endif
 #include "declarative/albumsmodel.h"
 #include <QDesktopWidget>
 #include "../settingsmanager.h"
@@ -17,8 +19,8 @@
 #include "../SlidingStackedWidget.h"
 
 Chats::Chats(VimkaMain *rosterWindow, QWidget *parent) :
-        QWidget(parent),
-        ui(new Ui::Chats)
+    QWidget(parent),
+    ui(new Ui::Chats)
 {
     ui->setupUi(this);
     m_rosterWindow = rosterWindow;
@@ -38,10 +40,10 @@ Chats::Chats(VimkaMain *rosterWindow, QWidget *parent) :
             this,SLOT(stopPlayer()));
 
     connect(twChats,SIGNAL(currentChanged ( int  )),this,SLOT(currentChatChanged(int)));
-
+#ifdef QT_PHONON_LIB
     pagePlayer = new MediaPlayer (this, m_rosterWindow->settingsMngr);
     //pagePlayer->m_MediaNotificationObject.setCurrentSource(Phonon::MediaSource(m_rosterWindow->settingsMngr->styleDir()+"/sounds/incomming.mp3"));
-
+#endif
     QRect rect = QApplication::desktop()->geometry();
     this->move (rect.center() - this->rect().center());
 
@@ -51,7 +53,9 @@ Chats::Chats(VimkaMain *rosterWindow, QWidget *parent) :
 
 void Chats::stopPlayer()
 {
+#ifdef QT_PHONON_LIB
     pagePlayer->m_MediaObject.stop();
+#endif
 }
 
 void Chats::hideEvent(QHideEvent *e)
@@ -72,11 +76,13 @@ void Chats::messageReceived(VKMessage *incommingMessage)
 
     show();
     if (!(incommingMessage->flags & 2) && ((tabIdFromUid(chat->fromId) != twChats->currentIndex())
-        || windowState() != Qt::WindowActive)) {
+                                           || windowState() != Qt::WindowActive)) {
         m_rosterWindow->trayIcon->startIncMessage();
         chat->startMigalko();
         if (m_rosterWindow->ui->tbSound->isChecked()){
+#ifdef QT_PHONON_LIB
             pagePlayer->incomming();
+#endif
         }
     }
 
@@ -106,7 +112,11 @@ PersonalChat *Chats::openPersonalChat(VKMessage *message, QIcon statusIcon)
             chat->showChat();
         }
     }else{
+#ifdef QT_PHONON_LIB
         chat = new PersonalChat(from_id, this, vkEngine, pagePlayer, albumsModel);
+#else
+        chat = new PersonalChat(from_id, this, vkEngine, albumsModel);
+#endif
         opennedChats.insert(from_id, chat);
 
         connect(chat->chatEdit, SIGNAL(focusInChatEdit()),
@@ -158,11 +168,11 @@ void Chats::showRecMessages()
     }*/
     m_rosterWindow->trayIcon->stopIncMessage();
     //if (hasNerMess){
-        show();
-        showNormal();
-        activateWindow();
-        window()->activateWindow();
-        window()->showNormal();
+    show();
+    showNormal();
+    activateWindow();
+    window()->activateWindow();
+    window()->showNormal();
     //}
 }
 
@@ -218,7 +228,9 @@ void Chats::on_twChats_tabCloseRequested(int index)
 
     if (twChats->count()==0){
         hide();
+#ifdef QT_PHONON_LIB
         pagePlayer->m_MediaObject.stop();
+#endif
 #ifdef MOBILE_UI
         m_rosterWindow->slidingStacked->slideInIdx(m_rosterWindow->slidingStacked->indexOf(m_rosterWindow->ui->rosterPage));
 #endif
@@ -254,7 +266,7 @@ void Chats::currentChatChanged(int index)
     }
 
     //if (!hasNerMess){
-        m_rosterWindow->trayIcon->stopIncMessage();
+    m_rosterWindow->trayIcon->stopIncMessage();
     //}
 
 }

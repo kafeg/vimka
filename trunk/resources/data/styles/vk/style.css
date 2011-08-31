@@ -177,13 +177,13 @@ QWidget#widgetActivity {
                                  stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
 }
   
-
-QTabWidget#twChats::pane { /* The tab widget frame */
+/*
+QTabWidget#twChats::pane {
      border-top: 1px solid #777;
  }
 
-/* Style the tab using the tab sub-control. Note that
-     it reads QTabBar _not_ QTabWidget */
+ Style the tab using the tab sub-control. Note that
+     it reads QTabBar _not_ QTabWidget
 QTabWidget#twChats QTabBar::tab {
      color: #45688E;
      font-weight: bold;
@@ -200,7 +200,7 @@ QTabWidget#twChats QTabBar::tab:selected {
      border: 1px solid #5C82AB;
      background-color: #6D8FB3;
      color: white;
- }
+ }*/
 
 QWidget#sMainWgt {
 background-color: white;
@@ -220,4 +220,3 @@ background-color: white;
      border: 1px solid #C4C4C3;
      border-radius: 3px;
  }
- 

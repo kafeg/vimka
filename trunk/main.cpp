@@ -26,8 +26,8 @@ int main(int argc, char *argv[])
 
     /*if ( QLocale::system().language () == QLocale::Russian ) {
 
-        myappTranslator.load(":/translates/locale_ru_RU.qm" );
-    }*/
+            myappTranslator.load(":/translates/locale_ru_RU.qm" );
+        }*/
 
     //qDebug() << QLocale::system().name();
 
@@ -37,10 +37,15 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain("http://vkontakte.ru/club19099587");
 
     QWebSettings::globalSettings()->setAttribute(
-            QWebSettings::PluginsEnabled, true);
+                QWebSettings::PluginsEnabled, true);
 
     VimkaMain w;
+
+#ifdef Q_OS_SYMBIAN
+    w.showMaximized();
+#else
     w.show();
+#endif
 
     return a.exec();
 }

@@ -157,14 +157,14 @@ QString SettingsManager::stylesDir()
 void SettingsManager::loadStyle()
 {
 
-    //грузим стиль
+    //РіСЂСѓР·РёРј СЃС‚РёР»СЊ
     QFile file(styleDir()+"/style.css");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString style = file.readAll();
 
     qApp->setStyleSheet(style);
 
-    //грузим иконки стиля
+    //РіСЂСѓР·РёРј РёРєРѕРЅРєРё СЃС‚РёР»СЏ
     Ui_VimkaMain *mwUI = m_rosterWindows->ui;
 
     QString iconsDir = styleDir() + "/icons/";
@@ -200,7 +200,7 @@ void SettingsManager::loadStyle()
     mwUI->tbSettingsCancel->setIcon(QIcon(iconsDir + "chats.png"));
     mwUI->tbShowSettings->setIcon(QIcon(iconsDir + "settings.png"));
 
-    //стиль чата
+    //СЃС‚РёР»СЊ С‡Р°С‚Р°
     QFile h(styleDir()+"/chat/header.htm");
     if (!h.open(QIODevice::ReadOnly | QIODevice::Text))
         return;

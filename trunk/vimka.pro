@@ -9,12 +9,16 @@ QT += core \
     phonon \
     declarative
 
-DESTDIR = bin
-OBJECTS_DIR = build
-MOC_DIR = build
-UI_DIR = build
-
 DEFINES += MOBILE_UI
+
+android {
+QT -= phonon
+}
+
+#DESTDIR = bin
+#OBJECTS_DIR = build
+#MOC_DIR = build
+#UI_DIR = build
 
 TARGET = vimka
 TEMPLATE = app
@@ -35,9 +39,6 @@ SOURCES += main.cpp \
     roster/wwactivelineedit.cpp \
     vk/vkmessage.cpp \
     chats/messagestyler.cpp \
-    chats/vkmediafactory.cpp \
-    chats/vkmediaview.cpp \
-    chats/mediaplayer.cpp \
     chats/declarative/albumsmodel.cpp \
     chats/spellcheck/SpellTextEdit.cpp \
     chats/spellcheck/highlighter.cpp \
@@ -61,6 +62,13 @@ SOURCES += main.cpp \
     chats/declarative/photoviewer.cpp \
     aboutdialog.cpp \
     SlidingStackedWidget.cpp
+
+!android {
+    SOURCES += chats/vkmediafactory.cpp \
+    chats/vkmediaview.cpp \
+    chats/mediaplayer.cpp \
+}
+
 HEADERS += vimkamain.h \
     roster/rosterwidgetitem.h \
     chats/chats.h \
@@ -76,9 +84,6 @@ HEADERS += vimkamain.h \
     roster/wwactivelineedit.h \
     vk/vkmessage.h \
     chats/messagestyler.h \
-    chats/vkmediafactory.h \
-    chats/vkmediaview.h \
-    chats/mediaplayer.h \
     chats/declarative/albumsmodel.h \
     chats/spellcheck/SpellTextEdit.h \
     chats/spellcheck/highlighter.h \
@@ -107,6 +112,13 @@ HEADERS += vimkamain.h \
     chats/declarative/photoviewer.h \
     aboutdialog.h \
     SlidingStackedWidget.h
+
+!android {
+HEADERS += chats/vkmediafactory.h \
+    chats/vkmediaview.h \
+    chats/mediaplayer.h \
+}
+
 FORMS += vimkamain.ui \
     chats/chats.ui \
     chats/personalchat.ui \
@@ -134,3 +146,27 @@ unix:INSTALLS += target
 unix:INSTALLS += images
 unix:INSTALLS += desktops
 unix:INSTALLS += data
+
+OTHER_FILES += \
+    android/AndroidManifest.xml \
+    android/src/eu/licentia/necessitas/industrius/QtActivity.java \
+    android/src/eu/licentia/necessitas/industrius/QtSurface.java \
+    android/src/eu/licentia/necessitas/industrius/QtApplication.java \
+    android/src/eu/licentia/necessitas/ministro/IMinistro.aidl \
+    android/src/eu/licentia/necessitas/ministro/IMinistroCallback.aidl \
+    android/res/drawable-mdpi/icon.png \
+    android/res/values/strings.xml \
+    android/res/values/libs.xml \
+    android/res/drawable-ldpi/icon.png \
+    android/res/drawable-hdpi/icon.png \
+    android/AndroidManifest.xml \
+    android/src/eu/licentia/necessitas/industrius/QtActivity.java \
+    android/src/eu/licentia/necessitas/industrius/QtSurface.java \
+    android/src/eu/licentia/necessitas/industrius/QtApplication.java \
+    android/src/eu/licentia/necessitas/ministro/IMinistro.aidl \
+    android/src/eu/licentia/necessitas/ministro/IMinistroCallback.aidl \
+    android/res/drawable-mdpi/icon.png \
+    android/res/values/strings.xml \
+    android/res/values/libs.xml \
+    android/res/drawable-ldpi/icon.png \
+    android/res/drawable-hdpi/icon.png
