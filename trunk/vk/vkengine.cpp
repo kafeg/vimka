@@ -30,7 +30,8 @@ VKEngine::VKEngine(VimkaMain *rosterWindow, QObject *parent) :
 
     m_reqCounter = 0;
 
-    app_id = "1914138";
+    //app_id = "1914138";
+    app_id = "2460607";
     //http://vkontakte.ru/login.php?app=1914138&layout=popup&type=browser&settings=16383
 
 //    Список прав:
@@ -56,12 +57,12 @@ VKEngine::VKEngine(VimkaMain *rosterWindow, QObject *parent) :
     authPageUrl = QUrl("http://vkontakte.ru/login.php?app="+app_id+"&layout=popup&type=browser&settings=" + QString::number(perms));
     // authPageUrl = QUrl("http://vkontakte.ru/login.php?app="+app_id+"&layout=popup&type=browser&settings=4095");
 
-    app_key = "MnJ2xvehDeGnn8OnpjWw";
+    //app_key = "MnJ2xvehDeGnn8OnpjWw";
+    app_key = "jW4iBkkMYRxGKTunOccb";
     api_url = "http://api.vkontakte.ru/api.php";
 
     viewBrowser = new QWidget();
     debugView = new QWebView();
-
 }
 
 //запрашиваем авторизацию и при необходимости настройки.
@@ -691,7 +692,16 @@ int VKEngine::reqPhotos_getUploadServer(QString aid, QString gid)
     int id = m_reqCounter++;
     VKRequest *request = new VKRequest(VKRequest::Photos_getUploadServer, mid, sid, secret, app_id, id );
     request->make_Photos_getUploadServer(aid, gid);
-    //qDebug() << request->requestUrlPath;
+    qDebug() << request->requestUrlPath;
+    appendRequest(request);
+    return id;
+}
+
+int VKEngine::reqPhotos_move(QString pid, QString target_aid, QString oid)
+{
+    int id = m_reqCounter++;
+    VKRequest *request = new VKRequest(VKRequest::Photos_move, mid, sid, secret, app_id, id );
+    request->make_Photos_move(pid, target_aid, oid);
     appendRequest(request);
     return id;
 }
