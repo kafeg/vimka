@@ -322,6 +322,30 @@ void VKRequest::make_Photos_getUploadServer(QString aid, QString gid)
     makeSig();
 }
 
+void VKRequest::make_Photos_move(QString pid, QString target_aid, QString oid)
+{
+    //    pid
+    //    ✔
+    //    id переносимой фотографии.
+    //    target_aid
+    //    ✔
+    //    id альбома, куда переносится фотография.
+    //    oid
+    //    id владельца переносимой фотографии, по умолчанию id текущего пользователя.
+    requestTypeText = "photos.move";
+
+    m_requestSrc.append("api_id="+m_api_id);
+    m_requestSrc.append("format=XML");
+    m_requestSrc.append("method="+requestTypeText);
+    m_requestSrc.append("oid="+oid);
+    m_requestSrc.append("pid="+pid);
+    m_requestSrc.append("sid="+m_sid);
+    m_requestSrc.append("target_aid="+target_aid);
+    m_requestSrc.append("v=3.0");
+
+    makeSig();
+}
+
 void VKRequest::make_Video_get(QString uid, QStringList videos,
                     QString width, QString count,
                     QString offset)

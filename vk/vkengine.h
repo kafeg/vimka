@@ -76,7 +76,8 @@ public:
     //    photos.save – сохраняет фотографии после успешной загрузки.
     //    photos.getProfileUploadServernew – возвращает адрес сервера для загрузки фотографии на страницу пользователя.
     //    photos.saveProfilePhotonew – сохраняет фотографию страницы пользователя после успешной загрузки.
-    //    photos.movenew - переносит фотографию из одного альбома в другой.
+    //    photos.move - переносит фотографию из одного альбома в другой.
+    int reqPhotos_move(QString pid, QString target_aid, QString oid = "");
     //    photos.makeCovernew - делает фотографию обложкой альбома.
     //    photos.reorderAlbumsnew - меняет порядок альбома в списке альбомов пользователя.
     //    photos.reorderPhotosnew - меняет порядок фотографий в списке фотографий альбома.
@@ -147,7 +148,8 @@ public:
         //видео
         Video_getUrl,
         //вход
-        Login
+        Login,
+        AlbumEditPageLoaded
     };
     //html video parsing, выбираем из странички с видео ссылку на файл
     int reqVideoUrl(QString videoInfo);
